@@ -1,0 +1,19 @@
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Dependencias y builds temporales
+node_modules/
+dist/
+.astro/
+.cache/
+
+# Entornos y secretos locales
+.env
+.env.*
+!.env.example
+
+# Plantillas de terceros nunca se publican
+**/referencias/plantillas-terceros/

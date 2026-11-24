@@ -1,0 +1,11 @@
+# robots.txt — Tayrona Travel (RFC 9309 + GEO/AEO 2026)
+# Buscadores tradicionales y crawlers/fetchers IA permitidos por defecto.
+
+User-agent: *
+Allow: /
+
+# Ejemplo opcional si el cliente decide bloquear entrenamiento IA en el futuro:
+# User-agent: GPTBot
+# Disallow: /
+
+Sitemap: https://tayronatravel.example/sitemap.xml
