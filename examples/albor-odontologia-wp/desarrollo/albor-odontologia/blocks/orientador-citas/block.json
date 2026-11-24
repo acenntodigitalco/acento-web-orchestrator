@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "albor/orientador-citas",
+  "version": "1.0.0",
+  "title": "Orientador de Valoración Dental",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "Selector interactivo (Interactivity API) para orientar al paciente según su motivo de consulta antes de agendar.",
+  "supports": {
+    "html": false,
+    "interactivity": true,
+    "align": ["wide"]
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "¿Qué te gustaría revisar en tu primera cita?"
+    }
+  },
+  "textdomain": "albor-odontologia",
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
+}

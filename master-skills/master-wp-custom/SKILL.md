@@ -38,14 +38,14 @@ description: >
 - Ordena el array `deprecated` de bloques de la versión más reciente a la más antigua acompañado de fixtures de prueba.
 - Escribe `templates/*.html` y `parts/*.html` en HTML puro de bloques sin etiquetas `<?php` y sin subdirectorios anidados.
 - Delega lógica dinámica o cadenas traducibles desde `templates/` y `parts/` a `<!-- wp:pattern {"slug":"..."} /-->`.
-- Usa `core/query`, encabezado raíz `<h2>`, tokens de `theme.json` y `esc_url( get_theme_file_uri( ... ) )` dentro de `patterns/*.php`, sin `get_posts()`, `the_title()`, estado de usuario, `<h1>` ni estilos inline.
+- Usa `core/query`, `core/post-featured-image` (junto a `add_theme_support( 'post-thumbnails' )` en archivos/singles), encabezado raíz `<h2>`, tokens de `theme.json` y `esc_url( get_theme_file_uri( ... ) )` dentro de `patterns/*.php`, sin `get_posts()`, `the_title()`, estado de usuario ni estilos inline; reserva el `<h1>` único exclusivamente para la plantilla o un patrón no reutilizado en otras vistas.
 - Declara la cabecera `Categories` en todo patrón visible de `patterns/*.php` (auto-registro WP 6.0+), marca `Inserter: no` en patrones internos y registra categorías personalizadas en PHP con `register_block_pattern_category()`.
 - Valida que todo patrón y bloque inserte y guarde en el editor sin disparar "Attempt Block Recovery".
 
 ### 2.3 Interactivity API (WP 6.9+)
-- Activa `supports.interactivity: true` y `viewScriptModule` en `block.json` para interactividad nativa del cliente.
+- Activa `supports.interactivity: true` y `viewScriptModule` en `block.json` para interactividad nativa del cliente; si el bloque no usa build externo, declara un `*.asset.php` hermano con la dependencia `'@wordpress/interactivity'` para que WordPress imprima el `<script type="importmap">`.
 - Implementa el estado interactivo con `store()`, `getContext()` y getters nativos.
-- Inyecta el contexto inicial desde PHP con `wp_interactivity_data_wp_context()` y calcula estado derivado en PHP mediante closures.
+- Inyecta el contexto inicial desde PHP con `wp_interactivity_data_wp_context()` y registra el estado derivado en PHP con `wp_interactivity_state()` mediante closures para que el SSR no vacíe directivas `data-wp-text` o `data-wp-bind--*`.
 - Separa IDs únicos de directiva con `---` y utiliza `data-wp-on-async--*` para eventos que no bloqueen el hilo principal.
 
 ### 2.4 Modelado de contenido (Bloques vs ACF)
@@ -93,7 +93,8 @@ description: >
 
 ### 3.1 Temas (`theme.json` v3 / WP 6.9+) y Admin UI
 - Crea proyectos nuevos como Block Theme y mantén Classic, Hybrid o Child Themes respetando su arquitectura base.
-- Expresa el sistema visual en `theme.json` v3 con presets `var(--wp--preset--*)`, `styles.elements.textInput`, `styles.elements.select`, `settings.border.radiusSizes` y estados `:hover`/`:focus` en botones.
+- Expresa el sistema visual en `theme.json` v3 con `"useRootPaddingAwareAlignments": true`, padding horizontal en `styles.spacing.padding`, presets `var(--wp--preset--*)`, `styles.elements.textInput`, `styles.elements.select`, `settings.border.radiusSizes` y estados `:hover`/`:focus` en botones.
+- Si incluyes bloques `wp:html` o layouts propios en Block Themes, añade `box-sizing: border-box`, `img, svg { max-width: 100%; height: auto; }` y `.wp-block-column { min-width: 0; }` en la hoja del tema para evitar desbordes horizontales.
 - Prevé la conversión `_wp_to_kebab_case()` al nombrar slugs en `theme.json` (`3xl` genera `--wp--preset--*--3-xl`; `cardShadow` genera `card-shadow`).
 - Respeta la cascada `core → theme.json → child theme.json → wp_global_styles (BD)` verificando que estilos guardados en BD no sobreescriban cambios en `theme.json`.
 - Declara bajo `patterns` en `theme.json` únicamente un array de slugs del directorio oficial.
@@ -135,8 +136,8 @@ description: >
 
 ## 5. Checklist de validación
 - [ ] Seguridad verificada: `wp_unslash()` + sanitización temprana, nonce + `current_user_can()` + ownership, escape tardío, `$wpdb->prepare()`, cero `eval`/`unserialize`/`extract`/SVG crudo, `ABSPATH` correcto y `WP_DEBUG`/`SAVEQUERIES` desactivados en producción.
-- [ ] Bloques y temas verificados: `apiVersion: 3`, `useBlockProps()`/`get_block_wrapper_attributes()`, `viewScriptModule`/`viewScript` para frontend, `templates/` y `parts/` en HTML puro sin subdirectorios, `patterns/*.php` sin `get_posts()`/`h1`/estilos inline y cero "Attempt Block Recovery".
-- [ ] Interactivity API verificada (si aplica): `supports.interactivity: true`, `store()`, `getContext()`, `wp_interactivity_data_wp_context()`, separador `---`, sin `data-wp-ignore`.
+- [ ] Bloques y temas verificados: `apiVersion: 3`, `useBlockProps()`/`get_block_wrapper_attributes()`, `viewScriptModule`/`viewScript` (`*.asset.php` si no hay build), `templates/` y `parts/` en HTML puro sin subdirectorios, `patterns/*.php` con `core/post-featured-image` sin `get_posts()`/estilos inline, `<h1>` único por vista y cero "Attempt Block Recovery".
+- [ ] Interactivity API verificada (si aplica): `supports.interactivity: true`, `store()`, `getContext()`, `wp_interactivity_data_wp_context()` + `wp_interactivity_state()` en PHP, separador `---`, sin `data-wp-ignore`.
 - [ ] Modelado verificado: bloques/patrones para layout, `acf-json/` versionado para datos estructurados, cero `meta_query` en `meta_value` y cero Flexible Content como page-builder libre.
 - [ ] Performance verificada: `posts_per_page` acotado, `no_found_rows`/`fields => 'ids'`, `absint() > 0` en IDs, `alloptions < 1MB` (`autoload = false`), HTTP externo `timeout <= 2s` cacheado, Object Cache con TTL/claves versionadas y cero `session_start()`/`setcookie()` en frontend público.
 - [ ] REST y Headless verificados: namespace `vendor/v1`, `WP_REST_Controller`, `permission_callback`, `args` tipados, `rest_ensure_response()`/`WP_Error`; WPGraphQL paginado con DataLoader, preview tokens seguros y revalidación webhook.

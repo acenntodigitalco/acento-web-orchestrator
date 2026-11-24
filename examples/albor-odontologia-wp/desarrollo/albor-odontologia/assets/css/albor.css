@@ -1,0 +1,557 @@
+/* ==========================================================================
+   Albor Odontología — CSS Editorial Nativo (v1.0.1)
+   ========================================================================== */
+
+:root {
+  --albor-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: clip;
+}
+
+img, picture, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wp-block-column {
+  min-width: 0;
+}
+
+.wp-block-html {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.albor-skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 999;
+  padding: 0.75rem 1.2rem;
+  background: var(--wp--preset--color--eucalyptus, #17332d);
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.65rem;
+  text-decoration: none;
+  transform: translateY(-170%);
+  transition: transform 150ms var(--albor-ease);
+}
+
+.albor-skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Cabecera y Menú Responsive (Desktop limpio + <details> móvil compacto)
+   ========================================================================== */
+.albor-header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: color-mix(in srgb, var(--wp--preset--color--canvas, #f8f6f1) 94%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+}
+
+.albor-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100%, var(--wp--style--global--wide-size, 74rem));
+  margin-inline: auto;
+  padding-block: 0.85rem;
+}
+
+.albor-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  font-family: var(--wp--preset--font-family--editorial, Georgia, serif);
+  font-weight: 700;
+  font-size: 1.22rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.albor-brand__mark {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.6rem;
+  background: var(--wp--preset--color--eucalyptus, #17332d);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.albor-nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.albor-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  transition: background-color 150ms var(--albor-ease), color 150ms var(--albor-ease);
+}
+
+.albor-nav-link:hover {
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+.albor-nav-link[aria-current="page"] {
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+  font-weight: 700;
+}
+
+.albor-nav-mobile {
+  position: relative;
+}
+
+.albor-nav-mobile summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  background: #ffffff;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.albor-nav-mobile summary::-webkit-details-marker {
+  display: none;
+}
+
+.albor-nav-drawer {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.55rem);
+  width: min(86vw, 19rem);
+  background: #ffffff;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1rem;
+  padding: 0.85rem;
+  box-shadow: 0 18px 40px -16px rgba(23, 51, 45, 0.25);
+  display: grid;
+  gap: 0.35rem;
+  z-index: 80;
+}
+
+.albor-nav-drawer a:not(.albor-btn) {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  border-radius: 0.65rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+.albor-nav-drawer a:not(.albor-btn)[aria-current="page"] {
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+  font-weight: 700;
+}
+
+@media (min-width: 56rem) {
+  .albor-nav-desktop {
+    display: flex;
+  }
+  .albor-nav-mobile {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Botones proporcionales (44–46px, sin inflación ni doble padding)
+   ========================================================================== */
+.albor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.65rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.25;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: normal;
+  text-align: center;
+  transition: transform 150ms var(--albor-ease), background-color 150ms var(--albor-ease), border-color 150ms var(--albor-ease);
+}
+
+.albor-btn--primary {
+  background: var(--wp--preset--color--eucalyptus, #17332d);
+  color: #ffffff;
+}
+
+.albor-btn--primary:hover {
+  background: var(--wp--preset--color--terracotta, #b96a4b);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.albor-btn--ghost {
+  background: #ffffff;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  border-color: var(--wp--preset--color--line-subtle, #dce2dc);
+}
+
+.albor-btn--ghost:hover {
+  border-color: var(--wp--preset--color--eucalyptus, #17332d);
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Tarjetas, blog, tabla y FAQ
+   ========================================================================== */
+.albor-card {
+  background: var(--wp--preset--color--surface, #ffffff);
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1.25rem;
+  padding: clamp(1.25rem, 2.5vw, 1.85rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.albor-card--sage {
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+}
+
+.wp-block-post-template.is-layout-grid > li {
+  display: flex;
+}
+
+.wp-block-post-template.is-layout-grid > li > .albor-card {
+  width: 100%;
+}
+
+.wp-block-post-featured-image {
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wp-block-post-featured-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.albor-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wp--preset--color--terracotta, #b96a4b);
+  margin: 0 0 0.6rem;
+}
+
+.albor-answer-first {
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+  border-left: 4px solid var(--wp--preset--color--terracotta, #b96a4b);
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-weight: 500;
+}
+
+.albor-table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1rem;
+  background: #ffffff;
+  margin-top: 1.5rem;
+}
+
+.albor-table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 34rem;
+  text-align: left;
+  font-size: 0.94rem;
+}
+
+/* Acordeón FAQ nativo <details> */
+.albor-faq-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.albor-faq {
+  background: var(--wp--preset--color--surface, #ffffff);
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.albor-faq[open] {
+  border-color: var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+.albor-faq summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 48px;
+}
+
+.albor-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.albor-faq__plus {
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 50%;
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-weight: 700;
+  transition: transform 180ms var(--albor-ease), background-color 180ms var(--albor-ease), color 180ms;
+}
+
+.albor-faq[open] .albor-faq__plus {
+  transform: rotate(45deg);
+  background: var(--wp--preset--color--eucalyptus, #17332d);
+  color: #ffffff;
+}
+
+.albor-faq__body {
+  padding: 0 1.25rem 1.15rem;
+  color: var(--wp--preset--color--ink-muted, #4a5a55);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   Formulario CRO de 1 columna (box-sizing correcto + radios sin deformar)
+   ========================================================================== */
+.albor-form {
+  background: var(--wp--preset--color--surface, #ffffff);
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1.35rem;
+  padding: clamp(1.25rem, 3vw, 2.1rem);
+  display: grid;
+  gap: 1.1rem;
+}
+
+.albor-field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.albor-field label {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+.albor-field input:not([type="radio"]):not([type="checkbox"]),
+.albor-field select {
+  width: 100%;
+  max-width: 100%;
+  height: 46px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 0.65rem;
+  background: #ffffff;
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  font-size: 0.98rem;
+}
+
+.albor-field input[aria-invalid="true"],
+.albor-field select[aria-invalid="true"] {
+  border-color: #b42318;
+}
+
+.albor-field__hint {
+  font-size: 0.82rem;
+  color: var(--wp--preset--color--ink-muted, #4a5a55);
+}
+
+.albor-field__error {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #b42318;
+  min-height: 1em;
+}
+
+.albor-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.albor-radio-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 42px;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.albor-radio-pill input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+.albor-form-status {
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.albor-form-status--ok {
+  background: var(--wp--preset--color--surface-sage, #eaefe9);
+  color: var(--wp--preset--color--eucalyptus, #17332d);
+  border: 1px solid var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+.albor-form-status--err {
+  background: #fef3f2;
+  color: #912018;
+  border: 1px solid #fecdca;
+}
+
+/* ==========================================================================
+   Consent Banner (esquina inferior derecha sin tapar CTAs del Hero) + <dialog>
+   ========================================================================== */
+.albor-consent {
+  position: fixed;
+  right: 1rem;
+  left: auto;
+  bottom: 1rem;
+  z-index: 90;
+  width: min(calc(100% - 2rem), 23rem);
+  background: #ffffff;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1rem;
+  padding: 0.95rem 1.1rem;
+  box-shadow: 0 16px 36px -18px rgba(23, 51, 45, 0.35);
+  display: grid;
+  gap: 0.65rem;
+}
+
+@media (max-width: 40rem) {
+  .albor-consent {
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    width: auto;
+  }
+}
+
+.albor-consent[hidden] {
+  display: none;
+}
+
+.albor-consent__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.albor-consent-btn {
+  min-height: 40px;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  background: var(--wp--preset--color--canvas, #f8f6f1);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.albor-consent-btn--primary {
+  background: var(--wp--preset--color--eucalyptus, #17332d);
+  color: #ffffff;
+  border-color: var(--wp--preset--color--eucalyptus, #17332d);
+}
+
+dialog.albor-dialog {
+  width: min(calc(100% - 2rem), 29rem);
+  border: 1px solid var(--wp--preset--color--line-subtle, #dce2dc);
+  border-radius: 1.25rem;
+  padding: 1.4rem;
+  background: #ffffff;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 220ms var(--albor-ease), transform 220ms var(--albor-ease), overlay 220ms allow-discrete, display 220ms allow-discrete;
+}
+
+@starting-style {
+  dialog.albor-dialog[open] {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+dialog.albor-dialog::backdrop {
+  background: rgba(23, 51, 45, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .albor-btn:hover {
+    transform: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .albor-card,
+  .albor-btn,
+  .albor-form,
+  .albor-faq {
+    border: 1px solid CanvasText;
+  }
+}

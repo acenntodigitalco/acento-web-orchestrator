@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-label="Ilustración editorial del consultorio Albor Odontología en Medellín">
+  <defs>
+    <linearGradient id="alborWall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EAEFE9"/>
+      <stop offset="100%" stop-color="#DDE6DF"/>
+    </linearGradient>
+    <linearGradient id="alborArch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#17332D"/>
+      <stop offset="100%" stop-color="#2C6E73"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="560" rx="28" fill="url(#alborWall)"/>
+  <!-- Ventanal arquitectónico con luz natural cálida -->
+  <path d="M110 470V210c0-88 72-160 160-160s160 72 160 160v260H110Z" fill="#F8F6F1" stroke="#17332D" stroke-width="2.5"/>
+  <path d="M148 450V216c0-67 55-122 122-122s122 55 122 122v234H148Z" fill="url(#alborArch)" opacity="0.14"/>
+  <!-- Sol cálido y horizonte orgánico -->
+  <circle cx="315" cy="185" r="46" fill="#B96A4B" opacity="0.88"/>
+  <path d="M148 370c56-28 118-16 168 8 32 16 54 14 76 4v68H148v-80Z" fill="#2C6E73" opacity="0.82"/>
+  <path d="M148 408c70-22 135-6 244 16v26H148v-42Z" fill="#17332D"/>
+  <!-- Silla clínica minimalista editorial y lámpara curva -->
+  <rect x="470" y="130" width="230" height="310" rx="22" fill="#FFFFFF" stroke="#DCE2DC" stroke-width="2"/>
+  <circle cx="585" cy="215" r="54" fill="#EAEFE9"/>
+  <path d="M585 178c-16 0-27 12-27 28 0 11 5 20 8 34 2 9 6 14 10 14s5-12 9-12 5 12 9 12 8-5 10-14c3-14 8-23 8-34 0-16-11-28-27-28Z" fill="#FFFFFF" stroke="#17332D" stroke-width="2.5" stroke-linejoin="round"/>
+  <rect x="515" y="298" width="140" height="14" rx="7" fill="#17332D"/>
+  <rect x="535" y="326" width="100" height="10" rx="5" fill="#B96A4B" opacity="0.7"/>
+  <rect x="520" y="362" width="130" height="36" rx="18" fill="#17332D"/>
+  <text x="585" y="385" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#F8F6F1">Valoración sin afán</text>
+  <text x="585" y="422" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#4A5A55">[DEMO · Reemplazar por foto real]</text>
+</svg>

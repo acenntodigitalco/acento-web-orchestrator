@@ -119,17 +119,30 @@ Al construir un sitio web público con este sistema, obtienes por defecto:
 
 ---
 
-## Ejemplo real incluido (`examples/tayrona-travel/`)
+## Ejemplos reales incluidos (`examples/`)
 
-Para que veas lo que construye el sistema en una prueba real, incluimos en [`examples/tayrona-travel/`](examples/tayrona-travel/) una **One-Page Landing de conversión + artículo de blog SEO/GEO** completa (con datos de contacto anonimizados):
+Incluimos dos proyectos reales generados con este sistema (con datos de negocio `[DEMO]`) y sus **prompts listos para replicar** en [`examples/prompts/`](examples/prompts/):
 
+### Ejemplo 1 — One-Page Landing HTML5 + GSAP (`examples/tayrona-travel/`)
+- **Prompt replicable:** [`01-landing-html-whatsapp.md`](examples/prompts/01-landing-html-whatsapp.md)
 - **Stack:** HTML5 + CSS3 moderno (OKLCH, Container Queries, `@starting-style`, `<details>`, `<dialog>`) + Vanilla JS (sin jQuery) + GSAP ScrollTrigger.
-- **Incluye:** `index.html`, artículo `blog/guia-parque-tayrona-santa-marta.html`, `robots.txt`, `sitemap.xml`, `tracking.js` (Consent Mode v2 + `dataLayer`), `main.js` (armador de mensaje de WhatsApp en 3 toques + parallax) y 4 imágenes WebP optimizadas.
-- **Cómo probarlo localmente:**
+- **Incluye:** landing enfocada 100% en WhatsApp (armador de mensaje en 3 toques), artículo de blog SEO/GEO, `robots.txt`, `sitemap.xml`, `tracking.js` (Consent Mode v2 + `dataLayer`) y 4 imágenes WebP optimizadas.
+- **Probar localmente:**
   ```bash
   python -m http.server 8080 --directory examples/tayrona-travel/desarrollo
   ```
-  Luego abre `http://localhost:8080`.
+
+### Ejemplo 2 — WordPress Block Theme Nativo desde Cero (`examples/albor-odontologia-wp/`)
+- **Demo en vivo:** **[stellar-red-wallaby-67.hostingersite.com](https://stellar-red-wallaby-67.hostingersite.com/)** *(entorno WordPress activo en Hostinger para ver el tema funcionando en directo)*
+- **Prompt replicable:** [`02-wordpress-block-theme.md`](examples/prompts/02-wordpress-block-theme.md)
+- **Stack:** WordPress Block Theme 100% nativo en Gutenberg (`theme.json` v3, `templates/*.html`, `parts/*.html`, `patterns/*.php`), sin constructores pesados ni jQuery.
+- **Qué demuestra en producción real:**
+  - **Diseño original desde una plantilla de referencia:** construido desde cero tras analizar una plantilla de terceros con `analista-plantillas` y certificado con `validador-originalidad` (`APROBADO`, 0 clases ni código copiado; la plantilla original no se incluye en este repositorio).
+  - **6 vistas completas:** Portada, Quiénes somos, Servicios, Blog (con `core/query` e imagen destacada nativa), Post individual y Contacto.
+  - **Bloque Gutenberg propio (`apiVersion: 3` + Interactivity API):** selector interactivo *Orientador de Valoración Dental* con renderizado SSR (`wp_interactivity_state`) e `importmap` nativo sin requerir `npm build`.
+  - **Formulario CRO + REST API:** endpoint `POST /wp-json/albor/v1/valoracion` con `WP_REST_Controller`, nonce anti-CSRF, almacenamiento privado en WP Admin y evento `generate_lead` disparado únicamente tras confirmación HTTP `201`.
+  - **SEO técnico 2026:** JSON-LD `@graph` (`Dentist`, `BreadcrumbList`, `Article` + `Person`) y filtro `robots_txt` enlazado a `/wp-sitemap.xml`.
+- **Cómo instalar este tema en tu propio WordPress:** comprime la carpeta `examples/albor-odontologia-wp/desarrollo/albor-odontologia` en un `.zip` y súbela desde **Apariencia → Temas → Añadir nuevo tema → Subir tema** (al activarlo, crea automáticamente las páginas demo de ejemplo).
 
 ---
 

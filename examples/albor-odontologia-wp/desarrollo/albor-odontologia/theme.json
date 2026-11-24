@@ -1,0 +1,203 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "48rem",
+      "wideSize": "74rem"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "canvas", "name": "Marfil piedra", "color": "#F8F6F1" },
+        { "slug": "surface", "name": "Blanco cálido", "color": "#FFFFFF" },
+        { "slug": "surface-sage", "name": "Salvia mineral", "color": "#EAEFE9" },
+        { "slug": "eucalyptus", "name": "Eucalipto profundo", "color": "#17332D" },
+        { "slug": "eucalyptus-soft", "name": "Eucalipto medio", "color": "#2E544B" },
+        { "slug": "terracotta", "name": "Arcilla suave", "color": "#B96A4B" },
+        { "slug": "mineral-teal", "name": "Turquesa mineral", "color": "#2C6E73" },
+        { "slug": "ink-muted", "name": "Tinta suave", "color": "#4A5A55" },
+        { "slug": "line-subtle", "name": "Borde sutil", "color": "#DCE2DC" }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "name": "Newsreader Editorial",
+          "slug": "editorial",
+          "fontFamily": "\"Newsreader\", Georgia, \"Times New Roman\", serif"
+        },
+        {
+          "name": "Plus Jakarta Sans",
+          "slug": "sans",
+          "fontFamily": "\"Plus Jakarta Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "xs", "name": "Micro", "size": "0.84rem" },
+        { "slug": "sm", "name": "Pequeño", "size": "0.94rem" },
+        { "slug": "base", "name": "Base", "size": "1.05rem" },
+        { "slug": "lg", "name": "Grande", "size": "1.22rem", "fluid": { "min": "1.08rem", "max": "1.28rem" } },
+        { "slug": "xl", "name": "Subtítulo", "size": "1.65rem", "fluid": { "min": "1.35rem", "max": "1.75rem" } },
+        { "slug": "2-xl", "name": "Sección", "size": "2.45rem", "fluid": { "min": "1.8rem", "max": "2.65rem" } },
+        { "slug": "hero", "name": "Hero", "size": "3.55rem", "fluid": { "min": "2.15rem", "max": "3.65rem" } }
+      ]
+    },
+    "spacing": {
+      "units": ["px", "rem", "%"],
+      "spacingSizes": [
+        { "slug": "xs", "name": "XS", "size": "0.5rem" },
+        { "slug": "sm", "name": "S", "size": "1rem" },
+        { "slug": "md", "name": "M", "size": "1.75rem" },
+        { "slug": "lg", "name": "L", "size": "clamp(2.25rem, 5vw, 4rem)" },
+        { "slug": "xl", "name": "XL", "size": "clamp(3rem, 6.5vw, 5.25rem)" }
+      ]
+    },
+    "border": {
+      "radiusSizes": [
+        { "slug": "sm", "name": "Compacto", "size": "0.65rem" },
+        { "slug": "md", "name": "Tarjeta", "size": "1.15rem" },
+        { "slug": "lg", "name": "Contenedor", "size": "1.65rem" },
+        { "slug": "pill", "name": "Píldora", "size": "999px" }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--canvas)",
+      "text": "var(--wp--preset--color--eucalyptus)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--sans)",
+      "fontSize": "var(--wp--preset--font-size--base)",
+      "lineHeight": "1.65"
+    },
+    "spacing": {
+      "padding": {
+        "top": "0px",
+        "right": "clamp(1.15rem, 4vw, 2.5rem)",
+        "bottom": "0px",
+        "left": "clamp(1.15rem, 4vw, 2.5rem)"
+      }
+    },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--editorial)",
+          "fontWeight": "600",
+          "lineHeight": "1.14",
+          "letterSpacing": "-0.02em"
+        },
+        "color": {
+          "text": "var(--wp--preset--color--eucalyptus)"
+        }
+      },
+      "h1": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--hero)"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--2-xl)"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontSize": "var(--wp--preset--font-size--xl)"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var(--wp--preset--color--mineral-teal)"
+        },
+        ":hover": {
+          "color": {
+            "text": "var(--wp--preset--color--terracotta)"
+          }
+        },
+        ":focus": {
+          "outline": {
+            "color": "var(--wp--preset--color--terracotta)",
+            "width": "2px",
+            "style": "solid",
+            "offset": "3px"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var(--wp--preset--color--eucalyptus)",
+          "text": "var(--wp--preset--color--surface)"
+        },
+        "border": {
+          "radius": "var(--wp--preset--border-radius--pill)"
+        },
+        "spacing": {
+          "padding": {
+            "top": "0.72rem",
+            "right": "1.4rem",
+            "bottom": "0.72rem",
+            "left": "1.4rem"
+          }
+        },
+        "typography": {
+          "fontWeight": "700",
+          "fontSize": "var(--wp--preset--font-size--sm)"
+        },
+        ":hover": {
+          "color": {
+            "background": "var(--wp--preset--color--terracotta)",
+            "text": "var(--wp--preset--color--surface)"
+          }
+        },
+        ":focus": {
+          "outline": {
+            "color": "var(--wp--preset--color--terracotta)",
+            "width": "3px",
+            "style": "solid",
+            "offset": "3px"
+          }
+        }
+      },
+      "textInput": {
+        "color": {
+          "background": "var(--wp--preset--color--surface)",
+          "text": "var(--wp--preset--color--eucalyptus)"
+        },
+        "border": {
+          "color": "var(--wp--preset--color--line-subtle)",
+          "width": "1px",
+          "style": "solid",
+          "radius": "var(--wp--preset--border-radius--sm)"
+        }
+      },
+      "select": {
+        "color": {
+          "background": "var(--wp--preset--color--surface)",
+          "text": "var(--wp--preset--color--eucalyptus)"
+        },
+        "border": {
+          "color": "var(--wp--preset--color--line-subtle)",
+          "width": "1px",
+          "style": "solid",
+          "radius": "var(--wp--preset--border-radius--sm)"
+        }
+      }
+    }
+  },
+  "templateParts": [
+    { "name": "header", "title": "Cabecera Albor", "area": "header" },
+    { "name": "footer", "title": "Pie de página Albor", "area": "footer" }
+  ],
+  "customTemplates": [
+    { "name": "page-quienes-somos", "title": "Quiénes somos y Equipo", "postTypes": ["page"] },
+    { "name": "page-servicios", "title": "Servicios odontológicos", "postTypes": ["page"] },
+    { "name": "page-contacto", "title": "Contacto y Valoración", "postTypes": ["page"] }
+  ]
+}

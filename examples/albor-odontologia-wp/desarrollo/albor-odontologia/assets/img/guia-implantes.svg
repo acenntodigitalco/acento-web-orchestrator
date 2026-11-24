@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" role="img" aria-label="Ilustración editorial sobre implantes dentales paso a paso">
+  <rect width="800" height="450" rx="22" fill="#17332D"/>
+  <circle cx="650" cy="100" r="140" fill="#2C6E73" opacity="0.28"/>
+  <circle cx="140" cy="370" r="110" fill="#B96A4B" opacity="0.24"/>
+  <rect x="88" y="88" width="624" height="274" rx="18" fill="#F8F6F1"/>
+  <circle cx="215" cy="225" r="72" fill="#EAEFE9"/>
+  <path d="M215 178v94M188 215h54M194 238h42M200 258h30" stroke="#17332D" stroke-width="5" stroke-linecap="round"/>
+  <rect x="325" y="155" width="290" height="20" rx="10" fill="#17332D"/>
+  <rect x="325" y="195" width="330" height="12" rx="6" fill="#4A5A55" opacity="0.35"/>
+  <rect x="325" y="220" width="295" height="12" rx="6" fill="#4A5A55" opacity="0.35"/>
+  <rect x="325" y="262" width="190" height="38" rx="19" fill="#B96A4B"/>
+  <text x="420" y="286" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Guía clínica 2026 [DEMO]</text>
+</svg>
